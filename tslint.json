@@ -1,0 +1,20 @@
+{
+  "extends": [
+    "tslint:latest",
+    "tslint-config-standard",
+    "tslint-react",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "interface-name": false,
+    "no-empty-interface": false,
+    "no-submodule-imports": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "member-ordering": false,
+    "member-access": false,
+    "jsx-no-lambda": false,
+    "jsx-boolean-value": false,
+    "max-classes-per-file": false
+  }
+}
