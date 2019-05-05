@@ -21,3 +21,6 @@ vscode 有关 各个语言自动设置格式
 https://segmentfault.com/a/1190000011122443
 
 https://code.visualstudio.com/docs/getstarted/settings#_language-specific-editor-settings
+
+###patch-package 给包打补丁的库
+https://github.com/ds300/patch-package
