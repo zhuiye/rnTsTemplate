@@ -54,7 +54,7 @@ const MainTabNavigator = createBottomTabNavigator(
     }
   },
   {
-    initialRouteName: "Main_Home",
+    initialRouteName: ScreenIds.Main_Home,
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, horizontal, tintColor }) => {
         const { routeName } = navigation.state;
@@ -130,7 +130,7 @@ const SwitchNavigator = createSwitchNavigator(
     [ScreenIds.Auth_Stack]: AuthStack
   },
   {
-    initialRouteName: "Auth_Loading"
+    initialRouteName: ScreenIds.Auth_Loading
   }
 );
 
