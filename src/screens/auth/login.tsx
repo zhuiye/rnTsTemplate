@@ -6,6 +6,7 @@ import { ApplicationState, UserActionProp } from "../../store";
 import { ScreenIds } from "../../values";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { FormInput } from "./components/form-input";
+import { BlockButton } from "../../components/button";
 import { commomStyle } from "../../values/comom-style";
 
 interface State {
@@ -40,16 +41,15 @@ class LoginScreen extends Component<
             this.setState({ password: value });
           }}
         />
-        <TouchableHighlight
-          style={styles.btn}
+        <BlockButton
+          text="登录"
           onPress={() => {
-            // console.log(this.props);
             this.props.doLogin();
             this.props.navigation.navigate(ScreenIds.Main_Tab_Navigator);
           }}
-        >
-          <Text>登陆</Text>
-        </TouchableHighlight>
+          disabled={false}
+          disableText="正在登陆中..."
+        />
       </View>
     );
   }

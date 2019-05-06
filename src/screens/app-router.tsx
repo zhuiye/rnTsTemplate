@@ -12,7 +12,8 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from "react-native";
 import {
   createAppContainer,
@@ -31,6 +32,13 @@ import LoginScreen from "./auth/login";
 import SampleScreen from "./sample/sample";
 import { ScreenIds } from "../values";
 import { Color } from "../values/color";
+
+const homeIcon = require("../assets/tabIcon/home.png");
+const homeUnFocuns = require("../assets/tabIcon/home_unfocus.png");
+const noticeIcon = require("../assets/tabIcon/notice.png");
+const noticeUnfocus = require("../assets/tabIcon/notice_unfocus.png");
+const userIcon = require("../assets/tabIcon/user.png");
+const userUnfocus = require("../assets/tabIcon/user_unfocus.png");
 
 const MainTabNavigator = createBottomTabNavigator(
   {
@@ -59,27 +67,23 @@ const MainTabNavigator = createBottomTabNavigator(
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, horizontal, tintColor }) => {
         const { routeName } = navigation.state;
-        let IconComponent = Ionicons;
-        let iconName: any;
-        const tColor: any = tintColor;
+        let icon: any = "";
         if (routeName === "Main_Home") {
-          iconName = `ios-information-circle${focused ? "" : "-outline"}`;
-          // Sometimes we want to add badges to some icons.
-          // You can check the implementation below.
-          // IconComponent = HomeIconWithBadge;
+          icon = focused ? homeIcon : homeUnFocuns;
         } else if (routeName === "User_Home") {
-          iconName = `ios-person`;
+          icon = focused ? userIcon : userUnfocus;
         } else if (routeName === "Notice_Home") {
-          iconName = `ios-options`;
+          icon = focused ? noticeIcon : noticeUnfocus;
         }
 
         // You can return any component that you like here!
-        return <IconComponent name={iconName} size={25} color={tColor} />;
+        return <Image source={icon} style={{ width: 24, height: 24 }} />;
       }
     }),
     tabBarOptions: {
-      activeTintColor: "tomato",
-      inactiveTintColor: "gray"
+      // tabStyle: { backgroundColor: Color.Theme },
+      activeTintColor: Color.Theme,
+      inactiveTintColor: Color.Gray
     }
   }
 );

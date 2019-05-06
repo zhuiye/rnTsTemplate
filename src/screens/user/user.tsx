@@ -42,9 +42,6 @@ class UserScreen extends Component<
   render() {
     return (
       <View>
-        <Text>{this.props.user.name}</Text>
-        <Text>{this.props.user.password}</Text>
-        <Text>我的页面</Text>
         <TouchableOpacity
           style={styles.btn}
           onPress={() => {

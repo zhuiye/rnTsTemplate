@@ -46,28 +46,6 @@ export default class MainHomeScreen extends Component<
             // console.log("将要失去焦点");
           }}
         />
-        <Text>hellow 组件</Text>
-        <Text>
-          {this.state.name} {this.state.age}
-        </Text>
-        <Text>仙桃:{this.props.title}</Text>
-        <TouchableNativeFeedback
-          style={styles.btn}
-          onPress={() => this.props.navigation.goBack()}
-        >
-          <Text style={{ color: "red" }}>哈哈哈</Text>
-        </TouchableNativeFeedback>
-        <TouchableOpacity
-          style={styles.btn}
-          onPress={() => {
-            this.props.navigation.navigate(ScreenIds.Sample, {
-              name: "hengchneg"
-            });
-            // alert('Test...')
-          }}
-        >
-          <Text>台庆怪了</Text>
-        </TouchableOpacity>
       </View>
     );
   }

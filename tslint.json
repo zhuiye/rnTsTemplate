@@ -12,6 +12,7 @@
     "ordered-imports": false,
     "object-literal-sort-keys": false,
     "member-ordering": false,
+    "no-var-requires":false,
     "member-access": false,
     "jsx-no-lambda": false,
     "jsx-boolean-value": false,
