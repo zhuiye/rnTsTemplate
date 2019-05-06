@@ -48,6 +48,14 @@ class UserScreen extends Component<
         <TouchableOpacity
           style={styles.btn}
           onPress={() => {
+            this.props.navigation.navigate(ScreenIds.Sample);
+          }}
+        >
+          <Text>simple---</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={() => {
             this.props.loginOut();
             this.props.navigation.navigate(ScreenIds.Auth_Stack);
           }}

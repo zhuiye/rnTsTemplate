@@ -1,4 +1,6 @@
 export enum Color {
   MainText = "",
-  SecondText = ""
+  SecondText = "",
+  White = "#ffffff",
+  Theme = "#1d4377"
 }

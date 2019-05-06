@@ -30,6 +30,7 @@ import UserScreen from "./user/user";
 import LoginScreen from "./auth/login";
 import SampleScreen from "./sample/sample";
 import { ScreenIds } from "../values";
+import { Color } from "../values/color";
 
 const MainTabNavigator = createBottomTabNavigator(
   {
@@ -108,8 +109,9 @@ const AppStack = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
+      headerTintColor: Color.White,
       headerStyle: {
-        backgroundColor: "#f4511e"
+        backgroundColor: Color.Theme
       }
     }
   }
