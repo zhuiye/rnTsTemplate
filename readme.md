@@ -24,3 +24,9 @@ https://code.visualstudio.com/docs/getstarted/settings#_language-specific-editor
 
 ###patch-package 给包打补丁的库
 https://github.com/ds300/patch-package
+
+### android studio 模拟器 无法正常连接网络
+https://stackoverflow.com/questions/42736038/android-emulator-not-able-to-access-the-internet
+
+解决方案:
+C:\Users\jdoe\AppData\Local\Android\sdk\emulator\emulator.exe -avd Nexus_5X_API_25 -dns-server 8.8.8.8

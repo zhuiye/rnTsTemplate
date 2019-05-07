@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { View, Text, TouchableHighlight, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TouchableHighlight,
+  StyleSheet,
+  Image,
+  StatusBar
+} from "react-native";
 import { NavigationScreenProps } from "react-navigation";
 import withReducerState from "../../store/withReducerState";
 import { ApplicationState, UserActionProp } from "../../store";
@@ -8,6 +15,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { FormInput } from "./components/form-input";
 import { BlockButton } from "../../components/button";
 import { commomStyle } from "../../values/comom-style";
+import { Color } from "../../values/color";
 
 interface State {
   account: string;
@@ -24,7 +32,14 @@ class LoginScreen extends Component<
   render() {
     const { account, password } = this.state;
     return (
-      <View style={commomStyle.conatiner}>
+      <View style={[commomStyle.conatiner, styles.conatiner]}>
+        <StatusBar barStyle="dark-content" backgroundColor={Color.White} />
+        <View style={styles.logoContainer}>
+          <Image
+            source={require("../../assets/logo.png")}
+            style={{ width: 50, height: 50 }}
+          />
+        </View>
         <FormInput
           icon={require("../../assets/user-fill.png")}
           placeholder="请输入你的账号"
@@ -35,8 +50,9 @@ class LoginScreen extends Component<
         />
         <FormInput
           icon={require("../../assets/lock-fill.png")}
-          placeholder="请输入你的账号"
+          placeholder="请输入你的密码"
           value={password}
+          secureTextEntry={true}
           onChangeText={value => {
             this.setState({ password: value });
           }}
@@ -57,10 +73,10 @@ class LoginScreen extends Component<
 
 export default withReducerState(LoginScreen);
 const styles = StyleSheet.create({
-  btn: {
-    height: 30,
-    backgroundColor: "orange",
-    justifyContent: "center",
+  conatiner: {
+    justifyContent: "center"
+  },
+  logoContainer: {
     alignItems: "center"
   }
 });

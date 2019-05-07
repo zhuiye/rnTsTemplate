@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     paddingLeft: SIZE.SPACE_12
   },
   textInput: {
-    flex: 1
+    flex: 1,
+    color: Color.Theme
   }
 });
