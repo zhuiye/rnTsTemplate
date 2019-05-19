@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ProgressBar from "../../components/progressBar";
 import {
   View,
   Text,
@@ -41,6 +42,17 @@ export default class NoticeScreen extends Component<
     return (
       <View>
         <Text>通知页面</Text>
+        <ProgressBar width={400} height={8} active={50} total={100} />
+        <ProgressBar width={400} height={8} active={100} total={300} />
+        <ProgressBar
+          width={400}
+          height={8}
+          active={50}
+          total={300}
+          activeStyle={{ backgroundColor: "red" }}
+        />
+
+        <Text>xxx</Text>
       </View>
     );
   }

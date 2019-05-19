@@ -30,4 +30,4 @@ https://stackoverflow.com/questions/42736038/android-emulator-not-able-to-access
 
 解决方案:
 C:\Users\jdoe\AppData\Local\Android\sdk\emulator\emulator.exe -avd Nexus_5X_API_25 -dns-server 8.8.8.8
-D:\androidSdk\emulator>emulator.exe -avd Nexus_5X_API_28 -dns-server 8.8.8.8
+emulator.exe -avd Nexus_5X_API_28 -dns-server 8.8.8.8
