@@ -30,6 +30,7 @@
               " return {",
                 "title: \"template\"",
                 "};",
+                "};",
                 "render() {return <View />;}",
                 "}",
                 "const styles=StyleSheet.create({})"

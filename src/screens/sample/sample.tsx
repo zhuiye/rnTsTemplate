@@ -12,6 +12,8 @@ import {
   NavigationScreenOptions,
   ScrollView
 } from "react-navigation";
+import ProgressBar from "../../components/progressBar";
+
 import { withMappedNavigationParams } from "react-navigation-props-mapper";
 import { RadioGroup } from "../../components/select";
 import { Color } from "../../values/color";
@@ -81,6 +83,15 @@ export default class SampleScreen extends Component<
             { key: "003", text: "美国", value: "asds" },
             { key: "004", text: "英国", value: "asssds" }
           ]}
+        />
+        <ProgressBar width={400} height={8} active={50} total={100} />
+        <ProgressBar width={400} height={8} active={100} total={300} />
+        <ProgressBar
+          width={400}
+          height={8}
+          active={50}
+          total={300}
+          activeStyle={{ backgroundColor: "red" }}
         />
       </ScrollView>
     );

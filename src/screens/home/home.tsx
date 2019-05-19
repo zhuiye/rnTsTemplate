@@ -18,8 +18,7 @@ import { ScreenIds, FrameSize, SIZE } from "../../values";
 import Swiper from "react-native-swiper";
 import { commomStyle } from "../../values/comom-style";
 import { Color } from "../../values/color";
-import Touchable from "react-native-platform-touchable";
-
+import MatrixItem from "./components/action-item";
 interface Props {
   title: string;
 }
@@ -66,31 +65,36 @@ export default class MainHomeScreen extends Component<
             // console.log("将要失去焦点");
           }}
         />
-        <LinearGradient
-          colors={["#4c669f", "#3b5998", "#192f6a"]}
-          style={styles.linearGradient}
-        >
-          <View style={styles.wrapper}>
-            <Swiper
-              style={styles.wrapper}
-              activeDotColor={Color.White}
-              autoplay={true}
-            >
-              {swiperData.map((item, index) => {
-                return (
-                  <View style={[styles.itemContainer]} key={index}>
-                    <Image
-                      style={styles.swiperPic}
-                      source={{
-                        uri: item.uri
-                      }}
-                    />
-                  </View>
-                );
-              })}
-            </Swiper>
-          </View>
-        </LinearGradient>
+
+        <View style={styles.wrapper}>
+          <Swiper
+            style={styles.wrapper}
+            activeDotColor={Color.White}
+            autoplay={true}
+          >
+            {swiperData.map((item, index) => {
+              return (
+                <View style={[styles.itemContainer]} key={index}>
+                  <Image
+                    style={styles.swiperPic}
+                    source={{
+                      uri: item.uri
+                    }}
+                  />
+                </View>
+              );
+            })}
+          </Swiper>
+        </View>
+
+        <View style={styles.matrixContainer}>
+          <MatrixItem uri={swiperData[0].uri} text="AcceptCar" badget={10} />
+          <MatrixItem uri={swiperData[0].uri} text="dispatcher" />
+          <MatrixItem uri={swiperData[0].uri} text="Assignment" />
+          <MatrixItem uri={swiperData[0].uri} text="maintain" />
+          <MatrixItem uri={swiperData[0].uri} text="help" />
+          <MatrixItem uri={swiperData[0].uri} text="AcceptCar" />
+        </View>
       </View>
     );
   }
@@ -122,5 +126,15 @@ const styles = StyleSheet.create({
     margin: 10,
     color: "#ffffff",
     backgroundColor: "transparent"
+  },
+  matrixContainer: {
+    marginTop: SIZE.SPACE_20,
+    marginHorizontal: SIZE.SPACE_20 * FrameSize.horizontalRatio,
+    paddingBottom: SIZE.SPACE_10,
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    flexDirection: "row",
+    backgroundColor: Color.White,
+    borderRadius: 8
   }
 });

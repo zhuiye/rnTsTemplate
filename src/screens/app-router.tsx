@@ -39,26 +39,34 @@ const noticeIcon = require("../assets/tabIcon/notice.png");
 const noticeUnfocus = require("../assets/tabIcon/notice_unfocus.png");
 const userIcon = require("../assets/tabIcon/user.png");
 const userUnfocus = require("../assets/tabIcon/user_unfocus.png");
+const simpleIcon = require("../assets/tabIcon/heart-fill.png");
+const simpleUnIcon = require("../assets/tabIcon/un-heart-fill.png");
 
 const MainTabNavigator = createBottomTabNavigator(
   {
     [ScreenIds.Main_Home]: {
       screen: MainHomeScreen,
       navigationOptions: {
-        tabBarLabel: "主页",
+        tabBarLabel: "home",
         header: null
       }
     },
     [ScreenIds.Notice_Home]: {
       screen: NoticeScreen,
       navigationOptions: {
-        tabBarLabel: "通知"
+        tabBarLabel: "notice"
       }
     },
     [ScreenIds.User_Home]: {
       screen: UserScreen,
       navigationOptions: {
-        tabBarLabel: "我的"
+        tabBarLabel: "mine"
+      }
+    },
+    [ScreenIds.Sample]: {
+      screen: SampleScreen,
+      navigationOptions: {
+        tabBarLabel: "Sample"
       }
     }
   },
@@ -68,12 +76,14 @@ const MainTabNavigator = createBottomTabNavigator(
       tabBarIcon: ({ focused, horizontal, tintColor }) => {
         const { routeName } = navigation.state;
         let icon: any = "";
-        if (routeName === "Main_Home") {
+        if (routeName === ScreenIds.Main_Home) {
           icon = focused ? homeIcon : homeUnFocuns;
-        } else if (routeName === "User_Home") {
+        } else if (routeName === ScreenIds.User_Home) {
           icon = focused ? userIcon : userUnfocus;
-        } else if (routeName === "Notice_Home") {
+        } else if (routeName === ScreenIds.Notice_Home) {
           icon = focused ? noticeIcon : noticeUnfocus;
+        } else if (routeName === ScreenIds.Sample) {
+          icon = focused ? simpleIcon : simpleUnIcon;
         }
 
         // You can return any component that you like here!
@@ -108,8 +118,8 @@ MainTabNavigator.navigationOptions = {
 */
 const AppStack = createStackNavigator(
   {
-    [ScreenIds.Main_Tab_Navigator]: MainTabNavigator,
-    [ScreenIds.Sample]: SampleScreen
+    [ScreenIds.Main_Tab_Navigator]: MainTabNavigator
+    // [ScreenIds.Sample]: SampleScreen
   },
   {
     defaultNavigationOptions: {
