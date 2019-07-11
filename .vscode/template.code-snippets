@@ -26,7 +26,7 @@
             "Props & NavigationScreenProps,",
             "State",
             "> {",
-            " static navigation = ({ navigation}: NavigationScreenProps): NavigationScreenOptions => {",
+            " static navigationOptions = ({ navigation}: NavigationScreenProps): NavigationScreenOptions => {",
               " return {",
                 "title: \"template\"",
                 "};",

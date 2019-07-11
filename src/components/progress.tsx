@@ -1,15 +1,25 @@
 import React from "react";
-import { ScrollView, Text, View, StyleSheet } from "react-native";
+import { ScrollView, Text, View, StyleSheet, ViewStyle } from "react-native";
 
 interface ProgressProps {
-  title: string;
+  containerStyle?: ViewStyle;
+  scrollViewStyle?: ViewStyle;
+  title?: string;
   reachAmount: number;
   dataList: Array<{ text: string; value: number; levelText: string }>;
+  distance?: number;
+  barColor?: string;
+  activeBarColor?: string;
 }
 const Progress: React.FunctionComponent<ProgressProps> = ({
   reachAmount,
   dataList,
-  title
+  title,
+  containerStyle,
+  scrollViewStyle,
+  distance = 112,
+  barColor,
+  activeBarColor
 }) => {
   let reachWidth = 0;
   let rangeIndex = 0;
@@ -28,26 +38,34 @@ const Progress: React.FunctionComponent<ProgressProps> = ({
     }
   }
   reachWidth =
-    rangeIndex * 112 +
+    rangeIndex * distance +
     (rangeIndex === 0 ? 0 : 6) +
     (rangeEnd === reachAmount
       ? 0
-      : (1 - (rangeEnd - reachAmount) / levelChai) * 112);
+      : (1 - (rangeEnd - reachAmount) / levelChai) * distance);
 
   return (
-    <View>
+    <View style={containerStyle}>
       <ScrollView
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         bounces={false}
-        style={{ backgroundColor: "#638CFF" }}
+        style={StyleSheet.flatten([
+          { backgroundColor: "#638CFF" },
+          scrollViewStyle
+        ])}
       >
         <View>
           <View style={[styles.container, { height: 30 }]}>
-            <HintText left={0} text={title} isActived={true} fontSize={12} />
+            {!!title && (
+              <HintText left={0} text={title} isActived={true} fontSize={12} />
+            )}
             {dataList.map((item, key) => (
               <LevelBox
-                left={112 * (key + 1)}
+                activeTextcolor={
+                  scrollViewStyle && scrollViewStyle.backgroundColor
+                }
+                left={distance * (key + 1)}
                 key={key}
                 text={item.levelText}
                 isActived={reachAmount >= item.value}
@@ -56,12 +74,16 @@ const Progress: React.FunctionComponent<ProgressProps> = ({
           </View>
 
           <View style={styles.container}>
-            <Bar type="total" width={(dataList.length + 1) * 112} />
-            <Bar type="reach" width={reachWidth} />
+            <Bar
+              type="total"
+              width={(dataList.length + 1) * distance}
+              color={barColor}
+            />
+            <Bar type="reach" width={reachWidth} color={activeBarColor} />
             {dataList.map((item, key) => (
               <Dot
                 key={key}
-                left={112 * (key + 1)}
+                left={(distance + 0.5) * (key + 1)}
                 isActived={reachAmount >= item.value}
               />
             ))}
@@ -72,7 +94,7 @@ const Progress: React.FunctionComponent<ProgressProps> = ({
               <HintText
                 key={key}
                 text={item.text}
-                left={112 * (key + 1)}
+                left={distance * (key + 1)}
                 isActived={reachAmount >= item.value}
               />
             ))}
@@ -118,13 +140,25 @@ interface LevelBoxProps {
   text: string;
   left: number;
   isActived?: boolean;
+  activeTextcolor?: string;
 }
-const LevelBox = ({ left, isActived, text }: LevelBoxProps) => {
+const LevelBox = ({
+  left,
+  isActived,
+  text,
+  activeTextcolor
+}: LevelBoxProps) => {
   return (
     <View
       style={[styles.levelBox, { left }, !isActived && styles.unActiveLevelBox]}
     >
-      <Text style={[styles.levelText, !isActived && styles.unActiveLevelText]}>
+      <Text
+        style={[
+          styles.levelText,
+          !isActived && styles.unActiveLevelText,
+          isActived ? { color: activeTextcolor } : null
+        ]}
+      >
         {text}
       </Text>
     </View>
@@ -133,11 +167,16 @@ const LevelBox = ({ left, isActived, text }: LevelBoxProps) => {
 
 interface BarProps {
   type: "total" | "reach";
+  color?: string;
   width: number;
 }
-const Bar = ({ type, width }: BarProps) => (
+const Bar = ({ type, width, color }: BarProps) => (
   <View
-    style={[type === "total" ? styles.totalBar : styles.reachedBar, { width }]}
+    style={[
+      type === "total" ? styles.totalBar : styles.reachedBar,
+      { width },
+      color ? { backgroundColor: color } : undefined
+    ]}
   />
 );
 const styles = StyleSheet.create({

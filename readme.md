@@ -1,12 +1,22 @@
 ### 集成 typescript https://github.com/Microsoft/TypeScript-React-Native-Starter
 
+<div style="display: flex; flex-direction: row; margin-bottom: 50px">
+  <img src="./pics/pic1.png" width="280" />
+  <img src="./pics/pic2.png" width="280" />
+  <img src="./pics/pic3.png" width="280" />
+</div>
+
+
 ```
 yarn add --dev typescript
 yarn add --dev react-native-typescript-transformer
 yarn tsc --init --pretty --jsx react
 touch rn-cli.config.js
 yarn add --dev @types/react @types/react-native
+
 ```
+
+
 
 CTRL+M 跳出 android 模拟器菜单
 

@@ -30,6 +30,9 @@ import NoticeScreen from "./notice/notice";
 import UserScreen from "./user/user";
 import LoginScreen from "./auth/login";
 import SampleScreen from "./sample/sample";
+import ProgressView from "./sample/progress-view";
+import LineBarProgress from "./sample/line-progress";
+import RadioView from "./sample/radio-view";
 import { ScreenIds } from "../values";
 import { Color } from "../values/color";
 
@@ -118,7 +121,10 @@ MainTabNavigator.navigationOptions = {
 */
 const AppStack = createStackNavigator(
   {
-    [ScreenIds.Main_Tab_Navigator]: MainTabNavigator
+    [ScreenIds.Main_Tab_Navigator]: MainTabNavigator,
+    [ScreenIds.Progress_View]: ProgressView,
+    [ScreenIds.Radio_View]: RadioView,
+    [ScreenIds.Line_Bar_Progress]: LineBarProgress
     // [ScreenIds.Sample]: SampleScreen
   },
   {

@@ -1,24 +1,29 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, ViewStyle } from "react-native";
 import Touchable from "react-native-platform-touchable";
 import { Color } from "../values/color";
 import { SIZE } from "../values";
 
 export interface BlockButtonProps {
   text: string;
-  disableText: string;
-
+  disableText?: string;
+  buttonStyle?: ViewStyle;
   onPress: () => void;
-  disabled: boolean;
+  disabled?: boolean;
 }
-export const BlockButton = ({ text, disabled, onPress }: BlockButtonProps) => {
+export const BlockButton = ({
+  text,
+  disabled,
+  onPress,
+  buttonStyle
+}: BlockButtonProps) => {
   return (
     <Touchable
       onPress={onPress}
       disabled={disabled}
       style={styles.btnContainer}
     >
-      <View style={styles.btnView}>
+      <View style={StyleSheet.flatten([styles.btnView, buttonStyle])}>
         <Text style={styles.textStyle}>{text}</Text>
       </View>
     </Touchable>
