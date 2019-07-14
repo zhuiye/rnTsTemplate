@@ -7,6 +7,7 @@
 </div>
 
 
+### Start
 ```
 yarn add --dev typescript
 yarn add --dev react-native-typescript-transformer
