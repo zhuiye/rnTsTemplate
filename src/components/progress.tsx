@@ -37,6 +37,9 @@ const Progress: React.FunctionComponent<ProgressProps> = ({
       break;
     }
   }
+  if (dataList.length === 1) {
+    distance = 178;
+  }
   reachWidth =
     rangeIndex * distance +
     (rangeIndex === 0 ? 0 : 6) +
